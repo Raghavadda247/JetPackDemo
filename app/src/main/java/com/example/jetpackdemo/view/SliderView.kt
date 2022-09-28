@@ -54,6 +54,7 @@ fun ViewPagerSlider() {
             Box(
                 modifier = Modifier
                     .align(Alignment.Center)
+                    .fillMaxHeight(.75f)
             ) {
                 Column() {
                     Image(
@@ -65,8 +66,7 @@ fun ViewPagerSlider() {
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(20.dp)
-                            .height(300.dp)
-                    )
+                            .weight(0.70f))
 
                     Text(
                         text = imgsrc.heading,
@@ -75,7 +75,6 @@ fun ViewPagerSlider() {
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
-                            .height(60.dp)
                     )
 
                     Text(
@@ -85,7 +84,6 @@ fun ViewPagerSlider() {
                         fontWeight = FontWeight.Normal,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
-                            .height(40.dp)
                             .padding(10.dp)
                     )
                     HorizontalPagerIndicator(
