@@ -1,37 +1,28 @@
 package com.example.jetpackdemo
 
-import android.graphics.drawable.BitmapDrawable
-import android.media.Image
 import android.os.Bundle
-import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Bottom
-import androidx.compose.ui.Alignment.Companion.BottomCenter
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.res.ResourcesCompat
+import androidx.compose.ui.unit.sp
 import com.example.jetpackdemo.ui.theme.JetpackDemoTheme
 import com.example.jetpackdemo.view.ViewPagerSlider
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -53,88 +44,164 @@ fun MyContent() {
         Column(
             modifier = Modifier
                 .background(Color.White)
-                .fillMaxSize()
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Bottom
         ) {
             ViewPagerSlider()
-            GoogleSignIn()
-            Text(text = "or", modifier = Modifier.align(CenterHorizontally))
-            EmailButtons()
-            TermsText()
+            LoginButtons()
         }
 
 
     }
 }
-
 @Composable
-fun EmailButtons() {
-
-    val mainButtonColor = ButtonDefaults.buttonColors(
-        backgroundColor = Color.White,
-        contentColor = Color.Gray
-    )
-
-    Row(
-        modifier = Modifier
-            .padding(40.dp, 10.dp, 30.dp, 10.dp)
+fun LoginButtons(){
+    Column(
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(bottom = 12.dp)
     ) {
-        Button(
-            onClick = { /*TODO*/ },
-            colors = mainButtonColor,
+        GoogleSignIn()
+        Text(
+            text = "or",
+            style = TextStyle(
+                color = colorResource(id = R.color.grey_medium4),
+            ),
+            modifier = Modifier.padding(top = 10.dp)
+        )
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(bottom = 10.dp)
         ) {
-            Text(text = "Email/Mobile")
+            EmailLogin()
+            Spacer(modifier = Modifier.width(18.dp))
+            FBLogin()
         }
-        Spacer(modifier = Modifier.padding(0.dp, 0.dp, 40.dp, 10.dp))
-        Button(
-            onClick = { /*TODO*/ },
-            colors = mainButtonColor
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_login_fb_1),
-                modifier = Modifier
-                    .size(20.dp),
-                contentDescription = "drawable icons",
-                tint = Color.Unspecified
-            )
-            Text(text = "Facebook")
-
-        }
+        TermsText()
     }
-
-
 }
 
 @Composable
 fun GoogleSignIn() {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {/*TODO*/ },
         modifier = Modifier
-            .padding(30.dp, 0.dp, 30.dp, 10.dp)
-            .fillMaxWidth()
+            .height(48.dp)
+            .padding(horizontal = 26.dp)
+            .fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.adda_blue)),
+        shape = RoundedCornerShape(8.dp)
     ) {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_login_google),
-            modifier = Modifier
-                .size(30.dp)
-                .background(Color.White, shape = CircleShape)
-                .padding(4.dp),
-            contentDescription = "drawable icons",
-            tint = Color.Unspecified
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_group_91),
+                contentDescription = "google sign in",
+                tint = Color.Unspecified
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = stringResource(id = R.string.login_with_google),
+                style = TextStyle(
+                    color = Color.White,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                textAlign = TextAlign.Center
+            )
+        }
+
+    }
+}
+
+@Composable
+fun EmailLogin() {
+
+    OutlinedButton(
+        onClick = { /*TODO*/ },
+        modifier = Modifier.padding(6.dp),
+        shape = RoundedCornerShape(6.dp),
+        border = BorderStroke(
+            width = 1.dp,
+            color = colorResource(id = R.color.grey_medium2)
         )
-        Text(text = "  Continue with google")
+    )
+    {
+        Text(
+            text = "Email/Mobile",
+            style = TextStyle(
+                color = Black,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Normal
+            ),
+            modifier = Modifier.padding(horizontal = 18.dp, vertical = 6.dp)
+        )
+    }
+
+
+}
+
+@Composable
+fun FBLogin() {
+
+    OutlinedButton(
+        onClick = { /*TODO*/ },
+        modifier = Modifier.padding(6.dp),
+        shape = RoundedCornerShape(6.dp),
+        border = BorderStroke(
+            width = 1.dp,
+            color = colorResource(id = R.color.grey_medium2)
+        ),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(horizontal = 18.dp, vertical = 3.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_login_fb_1),
+                contentDescription = "fb login",
+                tint = colorResource(id = R.color.fb_color)
+            )
+            Text(
+                text = "Facebook",
+                style = TextStyle(
+                    color = Black,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+            )
+        }
+
+
     }
 }
 
 @Composable
 fun TermsText() {
     Row(
-        modifier = Modifier.padding(3.dp)
+        modifier = Modifier.padding(top = 5.dp),
+        horizontalArrangement = Arrangement.Center
     ) {
-        Text(text = "By continuing you agree with our ")
-        Text(text = "terms and conditions", modifier = Modifier
-            .clickable { }
-            .padding(0.dp, 0.dp, 0.dp, 5.dp)
-            .align(Alignment.Bottom), color = Color.Blue)
+        Text(
+            text = "By continuing you agree with our",
+            style = TextStyle(
+                fontSize = 12.sp,
+                color = colorResource(id = R.color.textColorGray)
+            )
+        )
+        Text(text = "terms and conditions",
+            style = TextStyle(
+                fontSize = 12.sp,
+                color = colorResource(id = R.color.privacy_color)
+            ),
+            modifier = Modifier
+                .clickable { /*TODO*/ }
+                .padding(start = 5.dp)
+        )
     }
 }
 

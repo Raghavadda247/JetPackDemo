@@ -1,3 +1,24 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">JetpackDemo</string>
+    <string name="login_with_google"> Continue with google</string>
+
+    <string name="web_crawler_txt_10">Notifications</string>
+    <string name="web_crawler_txt_11" >, Job </string>
+    <string name="web_crawler_txt_12">Alerts</string>
+    <string name="web_crawler_txt_13">, Current Affairs </string>
+    <string name="caption1">10+ Crore students\' learning  and sharing community</string>
+    <string name="caption2">1 Lakh+ government job \n selections</string>
+    <string name="caption3">10,000+ tests, 5000+ hours of Recorded and Live sessions</string>
+    <string name="caption4">Latest Exam notifications, Job alerts, Current affairs</string>
+    <string name="onboarding_title1">Largest Learning Destination</string>
+    <string name="onboarding_title2">Highest Success Numbers</string>
+    <string name="onboarding_title3">Unmatched Tests &amp; Video Classes</string>
+    <string name="onboarding_title4">Stay ahead of the pack</string>
+    <string name="onboarding_title5">Exam Oriented Tests and Video Classes</string>
+    <string name="onboarding_title6">Ask your Doubts</string>
+    <string name="onboarding_title7">Best-in-Class Study Material</string>
+    <string name="caption5">Remain ahead of the pack</string>
+    <string name="caption6">10k+ tests, 5k+ hours of Recorded Video Classes</string>
+    <string name="caption7">Superfast Doubt solution by experts</string>
+    <string name="caption8">Test Series, Sample papers, E-Books, Notes &amp; PDFs</string>
 </resources>
